@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
 
     if @item.save
       flash[:notice] = "Your Todo Saved."
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       flash.now[:alert] = "There was a problem, try again."
       render :new
@@ -31,6 +31,15 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @item = Item.find(params[:id])
+
+    if @item.destroy
+      flash[:notice] = "Item '#{@item.name}' was deleted."
+      redirect_to user_path(current_user)
+    else
+      flash.now[:alert] = "There was a Error deleting your Item."
+      render :show
+    end
   end
 
   private

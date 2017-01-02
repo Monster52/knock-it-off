@@ -2,5 +2,6 @@
 <%= link_to "Create Todos", new_user_item_path(current_user) %>
 
 <% current_user.items.each do |item| %>
-  <h4><%= item.name %></h4>
+  <h4><%= item.name %> | <%= link_to "", user_item_path(current_user, id: item.id), method: :delete, class: 'glyphicon glyphicon-ok' %>
+</h4>
 <% end %>
