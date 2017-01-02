@@ -2,6 +2,8 @@
 <%= link_to "Create Todos", new_user_item_path(current_user) %>
 
 <% current_user.items.each do |item| %>
-  <h4><%= item.name %> | <%= link_to "", user_item_path(current_user, id: item.id), method: :delete, class: 'glyphicon glyphicon-ok' %>
+  <h4><%= item.name %> |
+    <%= link_to "", user_item_path(current_user, id: item.id), method: :delete, class: 'glyphicon glyphicon-ok' %> |
+    <%= distance_of_time_in_words(Time.now, item.created_at - 7.days) %>
 </h4>
 <% end %>
