@@ -1,0 +1,11 @@
+<h1>Create Item</h1>
+
+<%= form_for [current_user, @item] do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: 'form-control', placeholder: "Title", autofocus: true %>
+  </div>
+
+
+  <%= f.submit "Submit", class: 'btn btn-primary' %>
+<% end %>
